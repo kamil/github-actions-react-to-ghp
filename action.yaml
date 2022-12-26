@@ -11,11 +11,11 @@ inputs:
   path:
     description: 'Specifies the path of the static assets after building'
     required: false
-    default: 'dist'
+    default: 'public/storybook'
   build_command:
     description: 'Specifies the command to run after npm ci for the build'
     required: false
-    default: 'npm run build'
+    default: 'yarn run build-storybook'
 outputs:
   page_url:
     description: "The URL of the page"
@@ -35,7 +35,7 @@ runs:
       shell: bash
       run: |
         echo "::group::Build"
-        npm ci
+        yarn install
         ${{ inputs.build_command }}
         echo "::endgroup::"
 
